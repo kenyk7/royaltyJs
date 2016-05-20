@@ -1,0 +1,32 @@
+
+<div class="container d-table">
+  <div class="d-table-cell">
+    <div class="loginBox center-block text-center">
+      <form id="login" name="loginForm" ng-submit="login.loginUser()" novalidate>
+          <div class="login-body">
+            <h1 class="title-login"><small>Bienvenido a</small><br> <strong>RoyaltyJs App</strong></h1>
+            <h3 class="subtitle-login">Escribe tus datos para ingresar:</h3>
+    
+            <div class="loginInput center-block">
+              <div class="form-group input-icon">
+                <input name="user" type="text" placeholder="Nombre de usuario" ng-model="login.formData.user" class="form-control " required>
+                <span class="icon-input icon-user-shape"></span>
+                <p ng-show="loginForm.user.$invalid && !loginForm.user.$pristine" class="help-block">Debes especificar un nombre de usuario</p>
+              </div>
+              <div class="form-group input-icon">
+                <input name="password" type="password" placeholder="Contraseña" ng-model="login.formData.password" class="form-control" required>
+                <span class="icon-input icon-lock"></span>
+                <p ng-show="loginForm.password.$invalid && !loginForm.password.$pristine" class="help-block">Debes especificar una contraseña</p>
+              </div>
+            </div>
+          </div>
+          <div class="login-footer">
+            <button ng-hide="!login.sendingAjax.button" type="submit" id="loginButton" class="form-control btn btn-primary btn-square fz-16">[ Ingresar_</button>
+            <spinner name="loginSpinner">
+              <entel-loader class="loaderContainer"></entel-loader>
+            </spinner>
+          </div>
+      </form>
+    </div>
+  </div>
+</div>

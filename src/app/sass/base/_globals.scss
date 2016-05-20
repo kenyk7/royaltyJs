@@ -1,0 +1,35 @@
+/**
+ * Global styles used accross sections
+ */
+
+.browsehappy{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: $brand-primary;
+    z-index: 9999;
+    color: #eee;
+    font-size: 16px;
+    text-align: center;
+    a{
+        color: #fff;
+        font-weight: bold;
+    }
+    p{
+        width: 100%;
+        padding: 20px;
+        position: absolute;
+        top: 50%;
+        margin-top: -80px;
+    }
+}
+
+*{
+    outline: none !important;
+}
+
+body{
+    overflow-x: hidden;
+}

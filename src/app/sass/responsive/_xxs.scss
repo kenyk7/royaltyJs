@@ -1,0 +1,30 @@
+@media (max-width:480px) {
+	// helpers
+	.text-center-xxs{
+		text-align: center !important;
+	}
+	.text-left-xxs{
+		text-align: left !important;
+	}
+	.text-right-xxs{
+		text-align: right !important;
+	}
+	.hidden-xxs{
+		display: none;
+	}
+	.visible-xxs{
+		display: block;
+	}
+	// end helpser
+	// login
+	.loginBox{
+		margin-top: 20px;
+		.login-body{
+			width: 100% !important;
+		}
+	} 
+	.title-login{
+		font-size: 30px;
+	}
+	// end login
+}
