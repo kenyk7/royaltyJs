@@ -1,4 +1,14 @@
 $border-login : #aeb3c0;
+.page-login{
+    display: table;
+    width: 100%;
+    height: 100vh;
+    margin-top: -50px;
+    .page-login-content{
+        display: table-cell;
+        vertical-align: middle;
+    }
+}
 
 .loginBox {
     max-width: 690px;
