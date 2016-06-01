@@ -1,0 +1,86 @@
+
+/**
+* Load animation
+*/
+$loader-size: 35px;
+
+////////////////////////////////////////////////////////////////////////////////////////
+// Loader animation
+
+.loader-spinner{
+  width: $loader-size;
+  height: $loader-size;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.loader{
+  .loader-spinner{
+    border: 4px solid rgba(182, 182, 182, 0.5);
+    border-bottom-color: $brand-primary ;
+     @include animation(loaderSpinner 2s linear 0s infinite);
+  }
+}
+
+
+
+// ==========================================================================
+// Loader Animation
+// ==========================================================================
+
+@include keyframes(loaderSpinner) {
+  from {
+    @include transform(rotate(0deg));
+  }
+  to {
+    @include transform(rotate(360deg));
+  }
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+
+/**
+ * Show animation when displaying an object
+ */
+.ng-hide-add         { opacity: 0; }
+
+/* when showing the picture */
+.ng-hide-remove      { animation:0.5s flipInX ease; }
+
+/* ANIMATIONS (FROM ANIMATE.CSS) ======================== */
+/* flip in */
+@keyframes flipInX {
+  0% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+    transition-timing-function: ease-in;
+    opacity: 0;
+  }
+
+  40% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+    transition-timing-function: ease-in;
+    transition-timing-function: ease-in;
+  }
+
+  60% {
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+    opacity: 1;
+  }
+
+  80% {
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+  }
+
+  100% {
+    transform: perspective(400px);
+    transform: perspective(400px);
+    transform: perspective(400px);
+  }
+}
