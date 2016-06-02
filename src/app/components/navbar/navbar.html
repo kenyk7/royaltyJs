@@ -17,12 +17,15 @@
       <ul class="nav navbar-nav">
         <li class="active"><a ng-href="#">Home</a></li>
         <li><a ng-href="#">About</a></li>
-        <li><a ng-href="#">Contact</a></li>
+        <li><a ng-href="todo">ToDo</a></li>
         <li><a ng-href="login">Login</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
           <a href="#">Application was created {{ vm.relativeDate }}.</a>
+        </li>
+        <li>
+          <a href="#" ng-click="vm.logout();">Logout</a>
         </li>
       </ul>
     </div><!-- /.navbar-collapse -->

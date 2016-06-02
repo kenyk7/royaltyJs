@@ -6,7 +6,7 @@
       .factory('loginService', loginService);
 
     /** @ngInject */
-    function loginService(localStorageService, Restangular, $q, $location){
+    function loginService(localStorageService, Restangular, $q, $state){
         var loginServiceFactory = {},
             loginAPI = Restangular.all('login');
 
@@ -43,7 +43,7 @@
             _authentication.isAuth = false;
             _authentication.user_info = '';
 
-            $location.path('/');
+            $state.transitionTo('login');
         };
 
         var _fillAuthData = function(){

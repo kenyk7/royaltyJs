@@ -8,7 +8,10 @@
     <button type="button" class="btn btn-lg btn-primary" ng-click="main.showToastr()">Splendid Toastr</button>
   </p>
   <p>
-    With ♥ thanks to the contributions of <b> ['Yeoman', 'Gulp', 'Angular']</b>
+    With ♥ thanks to the contributions of 
+    [<b ng-repeat="item in main.data">
+      {{item.name}}
+    </b>]
   </p>
   <p>
     <button type="button" class="btn btn-primary">Primary</button>
@@ -16,6 +19,9 @@
     <button type="button" class="btn btn-info">Info</button>
     <button type="button" class="btn btn-warning">Warning</button>
     <button type="button" class="btn btn-danger">Danger</button>
+  </p>
+  <p>
+    <span class="badge" ng-repeat="todo in main.todo">{{todo.name}}</span> 
   </p>
 </div>
 

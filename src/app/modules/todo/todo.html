@@ -1,0 +1,14 @@
+
+<div class="container">
+  <h2 class="text-center">ToDo</h2><hr>
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+      <div class="list-group" ng-repeat="todo in todo.todo" >
+        <a href="#" class="list-group-item" ng-class="{active: $index == '0' }">
+          <h4 class="list-group-item-heading">{{todo.name}}</h4>
+          <p class="list-group-item-text">{{todo.description}}</p>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

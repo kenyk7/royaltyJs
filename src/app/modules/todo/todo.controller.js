@@ -3,34 +3,27 @@
 
   angular
     .module('royaltyJs')
-    .controller('MainController', MainController);
+    .controller('TodoController', TodoController);
 
   /** @ngInject */
-  function MainController($timeout, webDevTec, toastr, mainService, Restangular) {
+  function TodoController(Restangular, todoService, $log) {
     var vm = this;
-
     /**
      * INITIALIZATIONS
      *
      * We define here initial states for variables to be used both
      * on this controller as on the view.
      */
-
-    vm.awesomeThings = [];
-    vm.classAnimation = '';
-    vm.showToastr = showToastr;
-
-    vm.todo = [];
-
-    vm.data = mainService.data;
     
-    // load functions
-    activate();
-
+    vm.total_pages = []; // Value set from header value on response
+    vm.current_page = 1;
+    vm.todo = [];
+    
     /**
      * END INITIALIZATIONS
      */
     
+
     /**
      * FUNCTIONS CALLED FROM VIEW
      *
@@ -38,36 +31,20 @@
      * is defined here.
      */
     
+
     // get all todo
     vm.getTodo = function () {
-      mainService.getTodo().then(function(response){
+      todoService.getTodo(true, vm.current_page).then(function(response){
         vm.todo = Restangular.stripRestangular(response);
+        vm.total_pages = _.times(todoService.getTotalPages());
       }, function(){
 
       });
     };
     vm.getTodo();
 
-    function activate() {
-      getWebDevTec();
+    $log.debug(vm.todo);
 
-      $timeout(function() {
-        vm.classAnimation = 'rubberBand';
-      }, 4000);
-    }
-
-    function showToastr() {
-      toastr.info('Fork <a href="https://github.com/Swiip/generator-gulp-angular" target="_blank"><b>generator-gulp-angular</b></a>');
-      vm.classAnimation = '';
-    }
-
-    function getWebDevTec() {
-      vm.awesomeThings = webDevTec.getTec();
-
-      angular.forEach(vm.awesomeThings, function(awesomeThing) {
-        awesomeThing.rank = Math.random();
-      });
-    }
     /**
      * END FUNCTIONS CALLED FROM VIEW
      */
@@ -81,8 +58,10 @@
      * handled here.
      */
      
+
     /**
      * END DOM EVENTS HANDLED WITH ANGULAR.ELEMENT
      */
+
   }
 })();
