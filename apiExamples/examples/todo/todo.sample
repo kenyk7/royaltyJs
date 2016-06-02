@@ -1,0 +1,80 @@
+Endpoint: /todo
+Method: POST
+Description:
+
+Request:
+{
+	"id": "1",
+	"name": "Boilerplate",
+	"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+	"priority": "1"
+}
+
+Response:
+-
+
+
+Endpoint: /todo
+Method: GET
+Description:
+
+Request: Endpoint
+
+Response:
+HEADERS:
+"total_pages" = "5"
+"Access-Control-Expose-Headers" = "total_pages"
+
+DATA:
+[
+	{
+		"id": "1",
+		"name": "Boilerplate",
+		"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+		"priority": "1"
+	}
+]
+
+
+
+Endpoint: /todo/:id
+Method: GET
+Description:
+
+Request: Endpoint
+
+Response:
+{
+	"id": "1",
+	"name": "Boilerplate",
+	"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+	"priority": "1"
+}
+
+
+
+Endpoint: /todo/:id
+Method: PUT
+Description:
+
+Request:
+{
+	"id": "1",
+	"name": "Boilerplate",
+	"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+	"priority": "1"
+}
+
+Response:
+-
+
+
+
+Endpoint: /todo/:id
+Method: DELETE
+Description:
+
+Request: Endpoint
+
+Response:
+-
