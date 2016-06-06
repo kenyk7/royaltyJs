@@ -17,7 +17,9 @@
     
     vm.total_pages = []; // Value set from header value on response
     vm.current_page = 1;
-    vm.todo = [];
+    vm.listTodo = [];
+    vm.todo = {};
+    vm.editing_index = -1;
     
     /**
      * END INITIALIZATIONS
@@ -35,15 +37,36 @@
     // get all todo
     vm.getTodo = function () {
       todoService.getTodo(true, vm.current_page).then(function(response){
-        vm.todo = Restangular.stripRestangular(response);
+        vm.listTodo = Restangular.stripRestangular(response);
         vm.total_pages = _.times(todoService.getTotalPages());
+        $log.debug(vm.listTodo);
       }, function(){
 
       });
     };
     vm.getTodo();
 
-    $log.debug(vm.todo);
+    // crud methods
+    // add
+    vm.addTodo = function(){
+      todoService.addTodo(vm.todo).then(function(){
+        vm.getTodo();
+        vm.todo = {};
+      },function(){
+
+      });
+    };
+    // update
+    vm.updateTodo = function($index){
+      vm.todoUpdate = vm.listTodo[$index];
+      todoService.updateTodo(vm.todoUpdate).then(function(){
+        vm.getTodo();
+        vm.editing_index = -1;
+      }, function(){
+
+      });
+    };
+
 
     /**
      * END FUNCTIONS CALLED FROM VIEW

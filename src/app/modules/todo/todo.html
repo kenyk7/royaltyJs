@@ -3,11 +3,59 @@
   <h2 class="text-center">ToDo</h2><hr>
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
-      <div class="list-group" ng-repeat="todo in todo.todo" >
-        <a href="#" class="list-group-item" ng-class="{active: $index == '0' }">
-          <h4 class="list-group-item-heading">{{todo.name}}</h4>
-          <p class="list-group-item-text">{{todo.description}}</p>
+      <!-- new todo -->
+      <div class="list-group">
+        <div class="list-group-item">
+          <form  method="POST" role="form" ng-submit="todo.addTodo();" class="mt-20">
+            <div class="form-group">
+              <input type="text" class="form-control input-sm" ng-model="todo.todo.name" placeholder="Nombre" required>
+            </div>
+            <div class="form-group">
+              <textarea class="form-control input-sm" ng-model="todo.todo.description" rows="2" placeholder="Descripción" required></textarea>
+            </div>
+            <div class="text-right">
+              <button type="submit" class="btn btn-primary" ng-submit="todo.addTodo();">Enviar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- list todo -->
+      <div class="list-group" ng-repeat="item in todo.listTodo" >
+        <a class="list-group-item" >
+          <div ng-if="todo.editing_index !== $index">
+            <h4 class="list-group-item-heading">{{item.name}}</h4>
+            <p class="list-group-item-text">{{item.description}}</p>
+            <div class="text-right">
+              <button type="button" class="btn btn-link" ng-click="todo.editing_index = $index">
+                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+              </button>
+            </div>
+          </div>
+          <div ng-if="todo.editing_index === $index">
+            <form action="#" method="POST" role="form">
+              <div class="form-group">
+                <input type="text" class="form-control" ng-model="item.name" placeholder="Nombre" required>
+              </div>
+              <div class="form-group">
+                <textarea ng-model="item.description" class="form-control" rows="2" required></textarea>
+              </div>
+              <div class="text-right">
+                <button type="button" class="btn btn-primary" ng-click="todo.updateTodo($index);">Guardar</button>
+              </div>
+            </form>
+          </div>
         </a>
+      </div>
+      <div class="text-center">
+        <ul class="pagination">
+          <li><a href="#">&laquo;</a></li>
+          <li><a href="#">1</a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#">3</a></li>
+          <li><a href="#">4</a></li>
+          <li><a href="#">5</a></li>
+          <li><a href="#">&raquo;</a></li>
+        </ul>
       </div>
     </div>
   </div>

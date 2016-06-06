@@ -31,7 +31,6 @@
       allowHtml: true,
       positionClass: 'toast-bottom-center',
       progressBar: true,
-      preventDuplicates: true,
       timeOut: 3000
     });
     
