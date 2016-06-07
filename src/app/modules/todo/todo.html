@@ -26,9 +26,14 @@
             <h4 class="list-group-item-heading">{{item.name}}</h4>
             <p class="list-group-item-text">{{item.description}}</p>
             <div class="text-right">
-              <button type="button" class="btn btn-link" ng-click="todo.editing_index = $index">
-                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-              </button>
+              <div class="btn-group">
+                <button type="button" class="btn btn-link" ng-click="todo.editing_index = $index">
+                  <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                </button>
+                <button type="button" class="btn btn-danger" ng-click="todo.openModalConfirm('todo', item, 'info', $index);">
+                  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                </button>
+              </div>
             </div>
           </div>
           <div ng-if="todo.editing_index === $index">

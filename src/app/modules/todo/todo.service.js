@@ -45,10 +45,10 @@
       /**
        * Add todo
        */
-      var _addTodo = function(client){
+      var _addTodo = function(todoObj){
         var deferred = $q.defer();
 
-        todo.post(client).then(function(response) {
+        todo.post(todoObj).then(function(response) {
           deferred.resolve(response);
           toastr.success(todoMessages.success_add);
         }, function(err) {
@@ -61,9 +61,9 @@
       /**
        * Update the path of an existing todo
        */
-      var _updateTodo = function(client){
+      var _updateTodo = function(todoObj){
         var deferred = $q.defer();
-        todo.one(client.id).customPUT(client).then(function(response) {
+        todo.one(todoObj.id).customPUT(todoObj).then(function(response) {
           deferred.resolve(response);
           toastr.success(todoMessages.success_update);
         }, function(err) {
@@ -76,9 +76,9 @@
       /**
        * Delete todo
        */
-      var _deleteTodo = function(client){
+      var _deleteTodo = function(todoObj){
         var deferred = $q.defer();
-        todo.one(client.id).remove().then(function(response) {
+        todo.one(todoObj.id).remove().then(function(response) {
           deferred.resolve(response);
           toastr.success(todoMessages.success_delete);
         }, function(err) {
@@ -114,11 +114,11 @@
       };
 
       /**
-       * Update the path of an existing clients : restore
+       * Update the path of an existing todoObjs : restore
        */
-      var _restoreTodoRemoved = function(client){
+      var _restoreTodoRemoved = function(todoObj){
         var deferred = $q.defer();
-        todo_removed.one(client.id).customPUT(client).then(function(response) {
+        todo_removed.one(todoObj.id).customPUT(todoObj).then(function(response) {
           deferred.resolve(response);
           toastr.success(todoMessages.success_restore);
         }, function(err) {

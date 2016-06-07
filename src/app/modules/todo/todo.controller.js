@@ -6,7 +6,7 @@
     .controller('TodoController', TodoController);
 
   /** @ngInject */
-  function TodoController(Restangular, todoService, $log) {
+  function TodoController(Restangular, todoService, $uibModal, $log) {
     var vm = this;
     /**
      * INITIALIZATIONS
@@ -63,6 +63,38 @@
         vm.getTodo();
         vm.editing_index = -1;
       }, function(){
+
+      });
+    };
+
+    /**
+     * MODALS
+     */
+    
+    /**
+     * Open modal confirm delete
+     */
+    vm.openModalConfirm = function(type, dataId, info, index) {
+      var modalInstance = $uibModal.open({
+        animation: true,
+        templateUrl: 'app/modules/modals/confirm_action/modal_confirm.html',
+        controller: 'ModalConfirmController',
+        controllerAs: 'modal',
+        size: 'sm',
+        resolve: {
+          data: function() {
+            return {
+              index: index,
+              type: type,
+              dataId: dataId,
+              info: info
+            };
+          }
+        }
+      });
+      modalInstance.result.then(function () {
+        vm.getTodo();
+      }, function () {
 
       });
     };
